@@ -15,11 +15,12 @@ public class Request_new_offer extends Precondition {
 	public static String[] statuses, types, per;
 	String dates = null;
 	WebElement req_but, field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
-			submit;
+			submit, smoke_yes, smoke_no;
 
 	public void req_new_Straight_Through() throws Exception {
 
 		female.click();
+		smoke_no.click();
 		field_mar_st.sendKeys(statuses[3]);
 		field_ins_types.sendKeys(types[2]);
 		beg_per.sendKeys("date_values[0]");
@@ -36,6 +37,7 @@ public class Request_new_offer extends Precondition {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("modalHeader")));
 
 		get_gender();
+		get_smoke();
 		get_mar_st();
 		get_pay_per();
 		get_ins_types();
@@ -48,12 +50,13 @@ public class Request_new_offer extends Precondition {
 		beg_per = driver.findElement(By.id("start_datepicker"));
 		end_per = driver.findElement(By.id("end_datepicker"));
 		for (int n = 0; n < date_values.length; n++) {
-			dates = dates + date_values[n];
-		}		
+			dates = date_values[n];
+		}
 	}
 
 	protected void submit() {
-		submit = driver.findElement(By.xpath("/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[2]"));
+		submit = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[2]"));
 		submit.click();
 	}
 
@@ -65,6 +68,11 @@ public class Request_new_offer extends Precondition {
 			statuses[j] = dd_mar_st.get(j).getText();
 		}
 		field_mar_st = driver.findElement(By.id("customer-maritalstatus"));
+	}
+
+	protected void get_smoke() {
+		smoke_yes = driver.findElement(By.xpath("//label[@for='Customer[smoker]0']"));
+		smoke_no = driver.findElement(By.xpath("//label[@for='Customer[smoker]1']"));
 	}
 
 	protected void get_ins_types() {
