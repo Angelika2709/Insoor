@@ -19,10 +19,10 @@ public class Request_new_offer extends Precondition {
 	public void req_new_Straight_Through() {
 		female.click();
 		smoke_no.click();
-		field_mar_st.sendKeys(statuses[3]);
-		field_ins_types.sendKeys(types[2]);
-		beg_per.sendKeys("date_values[0]");
-		end_per.sendKeys("date_values[1]");
+		
+		field_ins_types.sendKeys(types[0]);
+		beg_per.sendKeys(date_values[1]);
+		end_per.sendKeys(date_values[2]);
 		field_pay_per.sendKeys(per[2]);
 	}
 
@@ -36,15 +36,14 @@ public class Request_new_offer extends Precondition {
 		get_gender();
 		get_smoke();
 		get_mar_st();
+		field_mar_st.sendKeys(statuses[0]);
 		get_pay_per();
 		get_ins_types();
+		
 		get_data();
-		submit();
-	}
-
-	protected void get_data() {
-		beg_per = driver.findElement(By.id("start_datepicker"));
-		end_per = driver.findElement(By.id("end_datepicker"));
+		Verification_for_request mes = new Verification_for_request();
+		mes.errors_req_new();
+		submit_req();
 	}
 	
 	protected void get_mar_st() {
@@ -56,6 +55,12 @@ public class Request_new_offer extends Precondition {
 		}
 		field_mar_st = driver.findElement(By.id("customer-maritalstatus"));
 	}
+
+	protected void get_data() {
+		beg_per = driver.findElement(By.id("start_datepicker"));
+		end_per = driver.findElement(By.id("end_datepicker"));
+	}
+		
 
 	protected void get_smoke() {
 		smoke_yes = driver.findElement(By.xpath("//label[@for='Customer[smoker]0']"));
@@ -91,16 +96,21 @@ public class Request_new_offer extends Precondition {
 		transgender = driver.findElement(By.xpath("//label[@for='Customer[gender]2']"));
 	}
 	
-	protected void submit() {	
+	public void submit_req() {	
 		driver.findElement(By.xpath("//button[contains(text(),'Add offer    ')]")).sendKeys(Keys.ENTER);		
+	}
+	
+	public void close_req() {	
+		driver.findElement(By.xpath("//button[contains(text(),'Close\r\n" + 
+				"    ')]")).sendKeys(Keys.ENTER);		
 	}
 
 	public static void main(String[] args) throws Exception {
-		Request_new_offer req = new Request_new_offer();
-		req.setup_enviroment();
-		req.autoriz();
-		req.main_sidebar();
+		setup_enviroment();
+		autoriz();
+		main_sidebar();
 		driver.navigate().to(links[28]);
+		Request_new_offer req = new Request_new_offer();
 		req.req_new();
 		req.req_new_Straight_Through();
 
