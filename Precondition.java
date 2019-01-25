@@ -10,8 +10,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class Precondition extends Verification{
-	public static WebDriver driver;
+class Precondition{
+	static WebDriver driver;
 	static WebElement login, password, signUp, req_but, page, inc_con;
 	public static int linksCount = 0;
 	public static String[] links = null; 

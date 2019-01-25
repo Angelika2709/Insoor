@@ -7,17 +7,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
 
 public class Request_new_offer extends Precondition {
 	public static String[] statuses, types, per;
-	String dates = null;
-	WebElement req_but, field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
-			submit, smoke_yes, smoke_no;
-	public String [] date_values = {"24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020"};
+	WebElement field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
+			smoke_yes, smoke_no;
+	public static String [] date_values = {"dd/MM/yyyy", "24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020"};
 
 
 	public void req_new_Straight_Through() {
-
 		female.click();
 		smoke_no.click();
 		field_mar_st.sendKeys(statuses[3]);
@@ -28,9 +27,8 @@ public class Request_new_offer extends Precondition {
 	}
 
 	public void req_new() throws Exception {
-		req_but = driver.findElement(By.id("new_offer"));
-		req_but.click();
-
+		driver.findElement(By.id("new_offer")).click();
+	
 		// ожидание загрузки кнопки
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("modalHeader")));
@@ -41,24 +39,14 @@ public class Request_new_offer extends Precondition {
 		get_pay_per();
 		get_ins_types();
 		get_data();
-		Thread.sleep(5000);
 		submit();
 	}
 
 	protected void get_data() {
 		beg_per = driver.findElement(By.id("start_datepicker"));
 		end_per = driver.findElement(By.id("end_datepicker"));
-		for (int n = 0; n < date_values.length; n++) {
-			dates = date_values[n];
-		}
 	}
-
-	protected void submit() {
-		submit = driver.findElement(By.xpath(
-				"/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[2]"));
-		submit.click();
-	}
-
+	
 	protected void get_mar_st() {
 		Select dropdown_mar_st = new Select(driver.findElement(By.xpath("//*[@id=\"customer-maritalstatus\"]")));
 		List<WebElement> dd_mar_st = dropdown_mar_st.getOptions();
@@ -101,6 +89,10 @@ public class Request_new_offer extends Precondition {
 		male = driver.findElement(By.xpath("//label[@for='Customer[gender]0']"));
 		female = driver.findElement(By.xpath("//label[@for='Customer[gender]1']"));
 		transgender = driver.findElement(By.xpath("//label[@for='Customer[gender]2']"));
+	}
+	
+	protected void submit() {	
+		driver.findElement(By.xpath("//button[contains(text(),'Add offer    ')]")).sendKeys(Keys.ENTER);		
 	}
 
 	public static void main(String[] args) throws Exception {
