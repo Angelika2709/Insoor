@@ -1,8 +1,5 @@
 package us3;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -16,8 +13,10 @@ public class Request_new_offer extends Precondition {
 	String dates = null;
 	WebElement req_but, field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
 			submit, smoke_yes, smoke_no;
+	public String [] date_values = {"24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020"};
 
-	public void req_new_Straight_Through() throws Exception {
+
+	public void req_new_Straight_Through() {
 
 		female.click();
 		smoke_no.click();

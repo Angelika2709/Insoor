@@ -1,5 +1,6 @@
 package us3;
 
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,20 +10,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Precondition {
+public abstract class Precondition extends Verification{
 	public static WebDriver driver;
-	WebElement login, password, signUp, req_but, page, inc_con;
+	static WebElement login, password, signUp, req_but, page, inc_con;
 	public static int linksCount = 0;
-	public static String[] links = null;
-	public String date_values[] = {"{DATE}", "{DATE[][+1M][]}"};
+	public static String[] links = null; 
 
-	protected void setup_enviroment() {
+	
+	public static void setup_enviroment() {
 		System.setProperty("webdriver.chrome.driver", "C://chromedriver_win32//chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://sotsos:St.Petersburg@insoor.com");
 	}
 
-	protected void autoriz() throws InterruptedException {
+	public static void autoriz() throws InterruptedException {
 		login = driver.findElement(By.id("loginform-email"));
 		password = driver.findElement(By.id("loginform-password"));
 		login.sendKeys("Anzhela.Barkovskaia@sotsos.com");
@@ -36,7 +37,7 @@ public class Precondition {
 	}
 
 	// список меню
-	protected void main_sidebar() throws Exception {
+	public static void main_sidebar() throws Exception {
 		List<WebElement> linksize = driver.findElements(By.tagName("a"));
 		linksCount = linksize.size();
 		links = new String[linksCount];
