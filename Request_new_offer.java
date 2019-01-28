@@ -11,42 +11,31 @@ import org.openqa.selenium.Keys;
 
 public class Request_new_offer extends Precondition {
 	public static String[] statuses, types, per;
-	WebElement field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
+	public WebElement field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
 			smoke_yes, smoke_no;
 	public static String [] date_values = {"dd/MM/yyyy", "24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020"};
+	public Verification_for_request mes = new Verification_for_request();
 
 
 	public void req_new_Straight_Through() {
-		female.click();
-		smoke_no.click();
-		
-		field_ins_types.sendKeys(types[0]);
-		beg_per.sendKeys(date_values[1]);
-		end_per.sendKeys(date_values[2]);
-		field_pay_per.sendKeys(per[2]);
-	}
-
-	public void req_new() throws Exception {
-		driver.findElement(By.id("new_offer")).click();
-	
-		// ожидание загрузки кнопки
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("modalHeader")));
-
-		get_gender();
-		get_smoke();
-		get_mar_st();
-		field_mar_st.sendKeys(statuses[0]);
-		get_pay_per();
-		get_ins_types();
-		
-		get_data();
-		Verification_for_request mes = new Verification_for_request();
-		mes.errors_req_new();
+		get_gender(); /*->*/ male.isSelected();
+		get_smoke(); /*->*/ smoke_no.isSelected();	
+		get_mar_st(); /*->*/ field_mar_st.sendKeys(statuses[1]);
+		get_ins_types(); /*->*/ field_ins_types.sendKeys(types[1]);
+		get_data(); /*->*/ beg_per.sendKeys(date_values[1]); end_per.sendKeys(date_values[2]);
+		get_pay_per(); /*->*/ field_pay_per.sendKeys(per[2]);
 		submit_req();
 	}
 	
-	protected void get_mar_st() {
+	public void req_new_Mar_st_empty() {
+		get_gender(); /*->*/ male.isSelected();
+		get_smoke(); /*->*/ smoke_no.isSelected();	
+		get_mar_st(); /*->*/ field_mar_st.sendKeys(statuses[0]);		
+		mes.getMessagesErrors();
+	}
+
+	
+	public void get_mar_st() {
 		Select dropdown_mar_st = new Select(driver.findElement(By.xpath("//*[@id=\"customer-maritalstatus\"]")));
 		List<WebElement> dd_mar_st = dropdown_mar_st.getOptions();
 		statuses = new String[linksCount];
@@ -63,8 +52,8 @@ public class Request_new_offer extends Precondition {
 		
 
 	protected void get_smoke() {
-		smoke_yes = driver.findElement(By.xpath("//label[@for='Customer[smoker]0']"));
-		smoke_no = driver.findElement(By.xpath("//label[@for='Customer[smoker]1']"));
+		smoke_yes = driver.findElement(By.id("Customer[smoker]0"));
+		smoke_no = driver.findElement(By.id("Customer[smoker]1"));
 	}
 
 	protected void get_ins_types() {
@@ -90,28 +79,32 @@ public class Request_new_offer extends Precondition {
 		field_pay_per = driver.findElement(By.id("userinsurancetypecompany-payment_period_type"));
 	}
 
-	protected void get_gender() {
-		male = driver.findElement(By.xpath("//label[@for='Customer[gender]0']"));
-		female = driver.findElement(By.xpath("//label[@for='Customer[gender]1']"));
-		transgender = driver.findElement(By.xpath("//label[@for='Customer[gender]2']"));
+	public void get_gender() {
+		male = driver.findElement(By.id("Customer[gender]0"));
+		female = driver.findElement(By.id("Customer[gender]1"));
+		transgender = driver.findElement(By.id("Customer[gender]2"));
 	}
 	
 	public void submit_req() {	
-		driver.findElement(By.xpath("//button[contains(text(),'Add offer    ')]")).sendKeys(Keys.ENTER);		
+		driver.findElement(By.xpath("/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[2]")).sendKeys(Keys.ENTER);		
 	}
 	
-	public void close_req() {	
-		driver.findElement(By.xpath("//button[contains(text(),'Close\r\n" + 
-				"    ')]")).sendKeys(Keys.ENTER);		
+	public void close_req() {
+		driver.findElement(By.xpath("/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[1]")).sendKeys(Keys.ENTER);
 	}
+	
 
 	public static void main(String[] args) throws Exception {
 		setup_enviroment();
 		autoriz();
 		main_sidebar();
 		driver.navigate().to(links[28]);
+		driver.findElement(By.id("new_offer")).click();
+		
+		// ожидание загрузки кнопки
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("modalHeader")));
 		Request_new_offer req = new Request_new_offer();
-		req.req_new();
 		req.req_new_Straight_Through();
 
 	}
