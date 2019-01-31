@@ -1,6 +1,5 @@
 package us3;
 
-
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,13 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-class Precondition{
+class Precondition {
 	static WebDriver driver;
-	static WebElement login, password, signUp, req_but, page, inc_con;
+	static WebElement login, password, signUp, req_but, page, inc_con, signout_but;
 	public static int linksCount = 0;
-	public static String[] links = null; 
+	public static String[] links = null;
 
-	
 	public static void setup_enviroment() {
 		System.setProperty("webdriver.chrome.driver", "C://chromedriver_win32//chromedriver.exe");
 		driver = new ChromeDriver();

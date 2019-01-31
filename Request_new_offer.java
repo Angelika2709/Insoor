@@ -14,26 +14,6 @@ public class Request_new_offer extends Precondition {
 	public WebElement field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,
 			smoke_yes, smoke_no;
 	public static String [] date_values = {"dd/MM/yyyy", "24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020"};
-	public Verification_for_request mes = new Verification_for_request();
-
-
-	public void req_new_Straight_Through() {
-		get_gender(); /*->*/ male.isSelected();
-		get_smoke(); /*->*/ smoke_no.isSelected();	
-		get_mar_st(); /*->*/ field_mar_st.sendKeys(statuses[1]);
-		get_ins_types(); /*->*/ field_ins_types.sendKeys(types[1]);
-		get_data(); /*->*/ beg_per.sendKeys(date_values[1]); end_per.sendKeys(date_values[2]);
-		get_pay_per(); /*->*/ field_pay_per.sendKeys(per[2]);
-		submit_req();
-	}
-	
-	public void req_new_Mar_st_empty() {
-		get_gender(); /*->*/ male.isSelected();
-		get_smoke(); /*->*/ smoke_no.isSelected();	
-		get_mar_st(); /*->*/ field_mar_st.sendKeys(statuses[0]);		
-		mes.getMessagesErrors();
-	}
-
 	
 	public void get_mar_st() {
 		Select dropdown_mar_st = new Select(driver.findElement(By.xpath("//*[@id=\"customer-maritalstatus\"]")));
@@ -93,7 +73,6 @@ public class Request_new_offer extends Precondition {
 		driver.findElement(By.xpath("/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[1]")).sendKeys(Keys.ENTER);
 	}
 	
-
 	public static void main(String[] args) throws Exception {
 		setup_enviroment();
 		autoriz();
@@ -104,9 +83,14 @@ public class Request_new_offer extends Precondition {
 		// ожидание загрузки кнопки
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("modalHeader")));
-		Request_new_offer req = new Request_new_offer();
-		req.req_new_Straight_Through();
-
+		Request_TestCases req = new Request_TestCases();
+		// #1 : req.req_new_Straight_Through();
+		// #2 : req.req_new_Mar_st_empty();
+		// #3 :	req_new_Pay_per_Empty();
+		// #4 : req_new_Beg_per_Empty();
+		req.req_new_End_per_Empty();
+		driver.navigate().to(links[25]);
+		driver.close();
 	}
 
 }
