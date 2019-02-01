@@ -1,6 +1,6 @@
 package us3;
 
-public class Request_TestCases extends Request_new_offer{
+public class Request_TestCases extends Request_new_Controls{
 	
 	public void req_new_Straight_Through()	{
 		get_gender(); /*->*/ male.isSelected();
