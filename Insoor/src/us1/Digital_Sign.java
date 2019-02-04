@@ -2,12 +2,15 @@ package us1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Digital_Sign extends Personal_data{
 	WebElement canvas, fin_but;
 	
-	public void getSign() {
-		canvas = driver.findElement(By.xpath("//*[@class='jSignature sign__jSignature'"));	
-		fin_but = driver.findElement(By.xpath("//*[@name='regfin-button'"));		
+	public void getDig_Sign() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		canvas = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='jSignature sign__jSignature']")));	
+		fin_but = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@name='regfin-button']")));		
 	}
 }
