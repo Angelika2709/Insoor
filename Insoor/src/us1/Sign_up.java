@@ -11,7 +11,7 @@ public class Sign_up extends Precondition {
 		password = driver.findElement(By.id("signupform-password"));
 		phonecode = driver.findElement(By.id("signupform-phonecode"));
 		phone = driver.findElement(By.id("signupform-phone"));
-		submit = driver.findElement(By.xpath("//*[@type='submit'"));
+		submit = driver.findElement(By.xpath("//*[@type='submit']"));
 	}
 
 }
