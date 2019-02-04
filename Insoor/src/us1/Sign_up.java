@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Sign_up extends Precondition {
-	WebElement email, password, phonecode, phone, submit;
+	public WebElement email, password, phonecode, phone, submit;
 
 	public void getSignUp() {
 		email = driver.findElement(By.id("signupform-email"));
