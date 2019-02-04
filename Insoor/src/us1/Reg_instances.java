@@ -2,12 +2,11 @@ package us1;
 
 import java.util.Random;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import net.bytebuddy.utility.RandomString;
 
 public class Reg_instances extends Sign_up{	
 	Sign_up sign_up = new Sign_up();
@@ -18,22 +17,8 @@ public class Reg_instances extends Sign_up{
 	int rand_int1 = 100 + (int)(Math.random()*(999));	
 	int rand_int2 = 10 + (int)(Math.random()*(99));
 	int rand_int3 = 100000001 + (int)(Math.random()*(999999999));
-	int rand_int4 = 999 + (int)(Math.random()*(9999));
-	private static final String CHAR_LIST = 
-	        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	    private static final int RANDOM_STRING_LENGTH = 10;
-	    
-	    public String generateRandomString(){
-	         
-	        StringBuffer randStr = new StringBuffer();
-	        for(int i=0; i<RANDOM_STRING_LENGTH; i++){
-	            int number = getRandomNumber();
-	            char ch = CHAR_LIST.charAt(number);
-	            randStr.append(ch);
-	        }
-	        return randStr.toString();
-	    }
-	 
+	int rand_int4 = 999 + (int)(Math.random()*(9999));	
+	int rand_int5 = 100001 + (int)(Math.random()*(999999));
     
 	
 	public void StraightThrough() {
@@ -46,12 +31,17 @@ public class Reg_instances extends Sign_up{
 		
 		sign_up_ver.getSignUpVerif();
 		sign_up_ver.code.sendKeys(Integer.toString(rand_int4));
-		sign_up_ver.ver_but.sendKeys(Keys.ENTER);
+		sign_up_ver.ver_but.submit();
 
-		
+	
 		per_data.getPersonalData();
-		//per_data.first_name.sendKeys("John"+rand_str);
-		
+		per_data.first_name.sendKeys("John_"+rand_int1);
+		per_data.last_name.sendKeys("Smith_"+rand_int1);
+		per_data.address.sendKeys("Mira street 3/438");
+		per_data.post_code.sendKeys(Integer.toString(rand_int5));
+		per_data.city.sendKeys("Saint-Petersbyrg");
+		per_data.birthday.sendKeys("27/09/1988");
+		per_data.conf_but.submit();
 		
 				
 	}
