@@ -1,15 +1,15 @@
 package us1;
 
-import org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
-
-public class Reg_instances extends Sign_up{	
+public class Reg_instances extends Digital_Sign{
 	Sign_up sign_up = new Sign_up();
 	Sign_up_verification sign_up_ver = new Sign_up_verification();
 	Personal_data per_data = new Personal_data();
@@ -22,7 +22,7 @@ public class Reg_instances extends Sign_up{
 	int rand_int4 = 999 + (int)(Math.random()*(9999));	
 	int rand_int5 = 100001 + (int)(Math.random()*(999999));
 
-	
+	@Test
 	public void StraightThrough() {
 		sign_up.getSignUp();		
 		sign_up.email.sendKeys("TDM_EMAIL@"+rand_int1+".com");
@@ -49,7 +49,7 @@ public class Reg_instances extends Sign_up{
 		a.build();
 		a.moveToElement(dig_sign.canvas,10,5).clickAndHold(dig_sign.canvas).moveByOffset(5,5).release(dig_sign.canvas); 
 		a.perform();
-		dig_sign.fin_but.submit();					
+		dig_sign.fin_but.submit();	
 	}
 	
 	public void Invalid_Email() {
@@ -58,8 +58,7 @@ public class Reg_instances extends Sign_up{
 		
 		String message = "Nattu";
 		assertEquals(message, driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[2]/div/div/div/div/form/div[1]/p")).getText());
-		System.out.println("oj");
-			
+		System.out.println("oj");			
 		
 				
 		sign_up.password.sendKeys("tosca!"+rand_int1);

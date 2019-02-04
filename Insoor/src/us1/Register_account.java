@@ -1,16 +1,19 @@
 package us1;
 
-public class Register_account extends Reg_instances {
+import org.junit.jupiter.api.AfterEach;
 
-	public static void main(String[] args) {
-		Precondition.setup_enviroment();
+public class Register_account extends Reg_instances{
+
+	public static void main(String[] args) throws Exception {		
+		Precondition set = new Precondition();
+		set.setUp();
 		Reg_instances reg = new Reg_instances();
 		/* 1 *///reg.StraightThrough();
-		/* 2 */reg.Invalid_Email();
-		
+		/* 2 */reg.Invalid_Email();	
 	}
-
-	public void tearDown() {
+	
+	@AfterEach
+	void tearDown() throws Exception {
 		driver.quit();
 	}
 
