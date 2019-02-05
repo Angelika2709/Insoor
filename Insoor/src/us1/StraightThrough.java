@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
-class StraightThrough extends Random {
+class StraightThrough {
 	
 	private Random rand = new Random();
 	private Precondition pr;
 	private Sign_up sign_up = new Sign_up();
-	private Sign_up_verification sign_up_ver = new Sign_up_verification();;
+	private Sign_up_verification sign_up_ver = new Sign_up_verification();
 	private Personal_data per_data = new Personal_data();
 	private Digital_sign dig_sign = new Digital_sign();
 	
