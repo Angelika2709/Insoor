@@ -3,15 +3,16 @@ package us3;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-class Precondition {
-	static WebDriver driver;
-	static WebElement login, password, signUp, req_but, page, inc_con, signout_but;
+class Precondition_req_new {
+	public static WebDriver driver;
+	public static WebElement login, password, signUp, req_but, page, inc_con, signout_but;
 	public static int linksCount = 0;
 	public static String[] links = null;
 
@@ -21,7 +22,7 @@ class Precondition {
 		driver.get("http://sotsos:St.Petersburg@insoor.com");
 	}
 
-	public static void autoriz() throws InterruptedException {
+	public static void autoriz() {
 		login = driver.findElement(By.id("loginform-email"));
 		password = driver.findElement(By.id("loginform-password"));
 		login.sendKeys("Anzhela.Barkovskaia@sotsos.com");
@@ -35,17 +36,21 @@ class Precondition {
 	}
 
 	// список меню
-	public static void main_sidebar() throws Exception {
+	public static void main_sidebar(){
 		List<WebElement> linksize = driver.findElements(By.tagName("a"));
 		linksCount = linksize.size();
 		links = new String[linksCount];
 		for (int i = 0; i < linksCount; i++) {
-			links[i] = linksize.get(i).getAttribute("href");
+			links[i] = linksize.get(i).getAttribute("href");			
 		}
+		Precondition_req_new.driver.navigate().to(Precondition_req_new.links[25]);		
 	}
-
-	public void tearDown() {
-		driver.quit();
+	
+	// разлогиниться
+	public static void sign_out() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement sign_out_but = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='fa fa-sign-out']")));
+		sign_out_but.sendKeys(Keys.ENTER);
 	}
-
 }

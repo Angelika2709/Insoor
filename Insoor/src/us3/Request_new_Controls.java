@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.Keys;
 
 
-public class Request_new_Controls extends Precondition {
+public class Request_new_Controls extends Precondition_req_new {
 	
 		public static String[] statuses, types, per;
 		public WebElement field_mar_st, field_ins_types, field_pay_per, male, female, transgender, beg_per, end_per,

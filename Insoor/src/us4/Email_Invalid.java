@@ -1,8 +1,5 @@
 package us4;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-class InvalidEmail {
+class Email_Invalid {
 	private Random rand = new Random();
 	private Precondition pr;
 	private Sign_up sign_up = new Sign_up();
@@ -38,11 +35,15 @@ class InvalidEmail {
 		WebElement error = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='form-signup']/div[1]/p")));
 		Assert.assertEquals(error.getText(), "Email is not a valid email address.");
-	}
+		}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		Precondition.driver.quit();
-	}
+		System.out.println("Running: tearDown");
+		this.pr=null;
+		this.rand=null;
+		this.sign_up=null;
+		pr.driver.close();
+		}
 
 }

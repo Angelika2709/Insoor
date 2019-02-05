@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
-class StraightThrough {
-	
+class StraightThrough {	
 	private Random rand = new Random();
 	private Precondition pr;
 	private Sign_up sign_up = new Sign_up();
@@ -52,11 +51,18 @@ class StraightThrough {
 		a.moveToElement(dig_sign.canvas, 10, 5).clickAndHold(dig_sign.canvas).moveByOffset(5, 5).release(dig_sign.canvas);
 		a.perform();
 		dig_sign.fin_but.submit();
-	}
+		}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		Precondition.driver.quit();
+		System.out.println("Running: tearDown");
+		this.pr=null;
+		this.dig_sign=null;
+		this.per_data=null;
+		this.rand=null;
+		this.sign_up=null;
+		this.sign_up_ver=null;
+		pr.driver.close();
 	}
 
 }
