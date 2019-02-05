@@ -1,18 +1,14 @@
 package us1;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Personal_data extends Sign_up_verification {
+public class Personal_data extends Sign_up_verification{
 	public WebElement first_name, last_name, address, post_code, city, birthday, conf_but;
 
-	@Test
-	void getPersonalData() {
+	public void getPersonalData() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		first_name = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='personaldataform-firstname']")));
@@ -24,5 +20,4 @@ public class Personal_data extends Sign_up_verification {
 		conf_but = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@name='confirm-button']")));
 
 	}
-
 }
