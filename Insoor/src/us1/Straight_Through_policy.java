@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import us3.Precondition_req_new;
 import us4.Precondition;
 
 class Straight_Through_policy {
@@ -29,11 +30,16 @@ class Straight_Through_policy {
 		Precondition_policy.driver.navigate().to(Precondition_policy.links[28]);
 		Precondition_policy.driver.findElement(By.id("new_policy")).click();
 		
-		upl_contr.get_ins_types();
-		/*->*/ upl_contr.field_ins_types.sendKeys(Upload_policy_controls.types[1]);
+		// ожидание загрузки кнопки
+		WebDriverWait wait = new WebDriverWait(Precondition_policy.driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("form-policy-filter")));
 		
+		upl_contr.get_ins_types();
+		/*->*/ upl_contr.field_ins_types_pol.sendKeys(Upload_policy_controls.pol_types[1]);
+				
 		upl_contr.get_insur();
-		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers[1]);
+		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers_pol[2]);
+		System.out.println(Upload_policy_controls.insurers_pol[2]);
 		
 		upl_contr.get_data();
 		/*->*/ upl_contr.beg_per.sendKeys(Upload_policy_controls.date_values[1]);
@@ -42,8 +48,8 @@ class Straight_Through_policy {
 		upl_contr.get_price();
 		/*->*/ upl_contr.field_price.sendKeys(Upload_policy_controls.price_values[0]);
 		
-		upl_contr.submit_req();
-		upl_contr.close_req();		
+		upl_contr.submit_pol();
+		upl_contr.close_pol();		
 		pr.sign_out();
 	}
 

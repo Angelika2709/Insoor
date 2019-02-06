@@ -39,12 +39,12 @@ class All_types_policy {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("policy-form-container")));
 		
 		upl_contr.get_ins_types();
-		/*->*/ upl_contr.field_ins_types.sendKeys(Upload_policy_controls.types[0]);
-		System.out.println(Upload_policy_controls.types[0]);
+		/*->*/ upl_contr.field_ins_types_pol.sendKeys(Upload_policy_controls.pol_types[0]);
+		System.out.println(Upload_policy_controls.pol_types[0]);
 		
 		upl_contr.get_insur();
-		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers[2]);
-		System.out.println(Upload_policy_controls.insurers[2]);
+		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers_pol[2]);
+		System.out.println(Upload_policy_controls.insurers_pol[2]);
 		
 		upl_contr.get_data();
 		/*->*/ upl_contr.beg_per.sendKeys(Upload_policy_controls.date_values[1]);
@@ -53,13 +53,13 @@ class All_types_policy {
 		upl_contr.get_price();
 		/*->*/ upl_contr.field_price.sendKeys(Upload_policy_controls.price_values[0]);
 		
-		upl_contr.submit_req();
+		upl_contr.submit_pol();
 		WebDriverWait wait1 = new WebDriverWait(pr.driver, 10);
 		WebElement error = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='form-policy-add']/div/div[2]/div/p")));
 		Assert.assertEquals(error.getText(), "Insurance Type ID cannot be blank.");
 		System.out.println(error.getText());	
 		
-		upl_contr.close_req();		
+		upl_contr.close_pol();		
 		pr.sign_out();
 	}
 

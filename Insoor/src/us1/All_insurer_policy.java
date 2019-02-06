@@ -35,10 +35,10 @@ class All_insurer_policy {
 		Precondition_policy.driver.findElement(By.id("new_policy")).click();
 		
 		upl_contr.get_ins_types();
-		/*->*/ upl_contr.field_ins_types.sendKeys(Upload_policy_controls.types[1]);
+		/*->*/ upl_contr.field_ins_types_pol.sendKeys(Upload_policy_controls.pol_types[1]);
 				
 		upl_contr.get_insur();
-		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers[0]);
+		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers_pol[0]);
 				
 		upl_contr.get_data();
 		/*->*/ upl_contr.beg_per.sendKeys(Upload_policy_controls.date_values[1]);
@@ -47,13 +47,13 @@ class All_insurer_policy {
 		upl_contr.get_price();
 		/*->*/ upl_contr.field_price.sendKeys(Upload_policy_controls.price_values[0]);
 		
-		upl_contr.submit_req();
+		upl_contr.submit_pol();
 		WebDriverWait wait1 = new WebDriverWait(pr.driver, 10);
 		WebElement error = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='form-policy-add']/div/div[3]/div/p")));
 		Assert.assertEquals(error.getText(), "Insurer's ID cannot be blank.");
 		System.out.println(error.getText());	
 		
-		upl_contr.close_req();		
+		upl_contr.close_pol();		
 		pr.sign_out();
 	}
 
