@@ -16,14 +16,14 @@ public class Upload_policy_controls extends Precondition_policy_view {
 	public String type, insur, begin, end;
 	public static int cardsCount = 0;
 	public static String[] cards = null;
-	public String value1, value2, value3, value4;
+	
 
 	Upload_policy_controls(String type, String insur, String begin, String end) {	
-		WebDriverWait wait = new WebDriverWait(driver, 10);		
-		field_ins_types = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='userinsurancetypecompany-insurance_type_id']")));
-		field_insur = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='userinsurancetypecompany-company_id']")));
-		beg_per = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='start_datepicker']")));
-		end_per =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='end_datepicker']")));
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		field_ins_types = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]")));
+		field_insur = driver.findElement(By.xpath("//*/form/div/div[3]/div/select[@id=\"userinsurancetypecompany-company_id\"]"));
+		beg_per = driver.findElement(By.xpath("//*[@id='start_datepicker']"));
+		end_per =  driver.findElement(By.xpath("//*[@id='end_datepicker']"));
 		
 		this.type = type;
 		this.insur = insur;
@@ -31,13 +31,13 @@ public class Upload_policy_controls extends Precondition_policy_view {
 		this.end = end;
 		}
 
-	public void submit_req() {
+	public void submit_upl() {
 		driver.findElement(By.xpath(
 				"/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[2]"))
 				.sendKeys(Keys.ENTER);
 	}
 
-	public void close_req() {
+	public void close_upl() {
 		driver.findElement(By.xpath(
 				"/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[1]"))
 				.sendKeys(Keys.ENTER);

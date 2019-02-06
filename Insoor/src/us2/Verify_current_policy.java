@@ -23,38 +23,33 @@ class Verify_current_policy {
 		pr.autoriz();
 		Precondition_policy_view.main_sidebar();
 	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-		System.out.println("Running: tearDown");
-		this.pr=null;
-		//this.upl_policy=null;
-		pr.driver.close();
-	}
-
+	
 	@Test
 	void test() {
 		Precondition_policy_view.driver.navigate().to(Precondition_policy_view.links[28]);
 		Precondition_policy_view.driver.findElement(By.id("new_policy")).click();	
 		
 		Upload_policy_controls upl_policy = new Upload_policy_controls("Life", "PAX", "24/01/2019", "24/02/2019");
-		
-		upl_policy.value1 = upl_policy.type;
-		upl_policy.field_ins_types.sendKeys(upl_policy.value1);	
-		//upl_policy.field_ins_types.sendKeys(upl_policy.type);
+			
+		upl_policy.field_ins_types.sendKeys(upl_policy.type);
 		upl_policy.field_insur.sendKeys(upl_policy.insur);
 		upl_policy.beg_per.sendKeys(upl_policy.begin);
 		upl_policy.end_per.sendKeys(upl_policy.end);
 		
 			
-		upl_policy.submit_req();
-		upl_policy.close_req();				
+		upl_policy.submit_upl();
+		upl_policy.close_upl();				
 		upl_policy.view_card();
 		
-		System.out.println(upl_policy.value1 = upl_policy.type);
-		
-		
+		//System.out.println(upl_policy.value1 = upl_policy.type);		
 		pr.sign_out();
+	}
+	
+	@AfterEach
+	void tearDown() throws Exception {
+		System.out.println("Running: tearDown");
+		this.pr=null;
+		pr.driver.close();
 	}
 
 }
