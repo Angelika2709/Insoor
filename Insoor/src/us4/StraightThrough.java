@@ -26,21 +26,21 @@ class StraightThrough {
 	@Test
 	void test() {
 		sign_up.getSignUp();
-		sign_up.email.sendKeys("TDM_EMAIL@" + rand.get_int1(1) + ".com");
-		sign_up.password.sendKeys("tosca!" + rand.get_int1(1));
-		sign_up.phonecode.sendKeys(Integer.toString(rand.get_int2(1)));
-		sign_up.phone.sendKeys(Integer.toString(rand.get_int3(1)));
+		sign_up.email.sendKeys("TDM_EMAIL@" + rand.get_int3() + ".com");
+		sign_up.password.sendKeys("tosca!" + rand.get_int1());
+		sign_up.phonecode.sendKeys(Integer.toString(rand.get_int2()));
+		sign_up.phone.sendKeys(Integer.toString(rand.get_int3()));
 		sign_up.submit.sendKeys(Keys.ENTER);
 
 		sign_up_ver.getSignUpVerif();
-		sign_up_ver.code.sendKeys(Integer.toString(rand.get_int4(1)));
+		sign_up_ver.code.sendKeys(Integer.toString(rand.get_int4()));
 		sign_up_ver.ver_but.submit();
 
 		per_data.getPersonalData();
-		per_data.first_name.sendKeys("John_" + rand.get_int1(1));
-		per_data.last_name.sendKeys("Smith_" + rand.get_int1(1));
+		per_data.first_name.sendKeys("John_" + rand.get_int1());
+		per_data.last_name.sendKeys("Smith_" + rand.get_int1());
 		per_data.address.sendKeys("Mira street 3/438");
-		per_data.post_code.sendKeys(Integer.toString(rand.get_int5(1)));
+		per_data.post_code.sendKeys(Integer.toString(rand.get_int5()));
 		per_data.city.sendKeys("Saint-Petersbyrg");
 		per_data.birthday.sendKeys("27/09/1988");
 		per_data.conf_but.submit();

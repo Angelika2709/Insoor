@@ -24,11 +24,11 @@ class Email_Invalid {
 	@Test
 	void test() {
 		sign_up.getSignUp();
-		sign_up.email.sendKeys("TDM_EMAIL@" + rand.get_int1(1));
+		sign_up.email.sendKeys("TDM_EMAIL@" + rand.get_int1());
 
-		sign_up.password.sendKeys("tosca!" + rand.get_int1(1));
-		sign_up.phonecode.sendKeys(Integer.toString(rand.get_int2(1)));
-		sign_up.phone.sendKeys(Integer.toString(rand.get_int3(1)));
+		sign_up.password.sendKeys("tosca!" + rand.get_int1());
+		sign_up.phonecode.sendKeys(Integer.toString(rand.get_int2()));
+		sign_up.phone.sendKeys(Integer.toString(rand.get_int3()));
 		sign_up.submit.sendKeys(Keys.ENTER);
 
 		WebDriverWait wait = new WebDriverWait(pr.driver, 10);
