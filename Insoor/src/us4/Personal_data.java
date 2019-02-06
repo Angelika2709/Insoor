@@ -10,8 +10,7 @@ public class Personal_data extends Sign_up_verification{
 
 	public void getPersonalData() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		first_name = wait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='personaldataform-firstname']")));
+		first_name = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='personaldataform-firstname']")));
 		last_name = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("personaldataform-lastname")));
 		address = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("personaldataform-address")));
 		post_code = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("personaldataform-postcode")));

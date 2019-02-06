@@ -3,38 +3,42 @@ package us1;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.Keys;
 
 
-public class Request_policy_Controls extends Precondition_req_policy {
+public class Upload_policy_controls extends Precondition_policy {
 	
-		public static String[] statuses, types;
+		public static String[] insurers, types;
 		public WebElement field_insur, field_ins_types, field_price, beg_per, end_per;
 		public static String [] date_values = {"dd/MM/yyyy", "24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020"};
 		public static String [] price_values = {"101", "-101", "0"};
 		
+		
 		//Insurance type
 		public void get_ins_types() {
-			Select dropdown_ins_types = new Select(driver.findElement(By.id("userinsurancetypecompany-insurance_type_id")));
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			Select dropdown_ins_types = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userinsurancetypecompany-insurance_type_id"))));
 			List<WebElement> dd_ins_types = dropdown_ins_types.getOptions();
 			types = new String[linksCount];
 			for (int j = 0; j < dd_ins_types.size(); j++) {
 				types[j] = dd_ins_types.get(j).getText();
-			}
-			field_ins_types = driver.findElement(By.id("userinsurancetypecompany-insurance_type_id"));
-		}
-		
+			}						
+			field_ins_types = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userinsurancetypecompany-insurance_type_id")));
+		}		
 		
 		//Insurer
 		public void get_insur() {
-			Select dropdown_insur = new Select(driver.findElement(By.id("userinsurancetypecompany-company_id")));
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			Select dropdown_insur = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userinsurancetypecompany-company_id"))));
 			List<WebElement> dd_insur = dropdown_insur.getOptions();
-			statuses = new String[linksCount];
+			insurers = new String[linksCount];
 			for (int j = 0; j < dd_insur.size(); j++) {
-				statuses[j] = dd_insur.get(j).getText();
+				insurers[j] = dd_insur.get(j).getText();
 			}
-			field_insur = driver.findElement(By.id("userinsurancetypecompany-company_id"));
+			field_insur = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userinsurancetypecompany-company_id")));
 		}
 		
 		//Begin and end

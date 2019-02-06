@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-class Precondition_req_policy {
+class Precondition_policy {
 	public static WebDriver driver;
 	public static WebElement login, password, signUp, req_but, page, inc_con, signout_but;
 	public static int linksCount = 0;
@@ -43,7 +43,7 @@ class Precondition_req_policy {
 		for (int i = 0; i < linksCount; i++) {
 			links[i] = linksize.get(i).getAttribute("href");			
 		}
-		Precondition_req_policy.driver.navigate().to(Precondition_req_policy.links[25]);		
+		Precondition_policy.driver.navigate().to(Precondition_policy.links[25]);		
 	}
 	
 	// разлогиниться
