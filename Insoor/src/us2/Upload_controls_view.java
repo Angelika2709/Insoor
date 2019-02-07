@@ -1,6 +1,7 @@
 package us2;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -65,6 +66,9 @@ public class Upload_controls_view extends Precondition_policy_view {
 		driver.findElement(By.xpath(
 				"/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[1]"))
 				.sendKeys(Keys.ENTER);
+		//Обновление страницы
+		Actions actions = new Actions(driver); 
+		actions.keyDown(Keys.CONTROL).sendKeys(Keys.F5).perform();
 	}
 
 	public String view_card() {

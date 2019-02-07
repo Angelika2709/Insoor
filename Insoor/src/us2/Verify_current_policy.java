@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -58,7 +60,6 @@ class Verify_current_policy {
 
 	private void get_verif() {
 		upl_view.view_card();
-		pr.driver.get("http://foo.bar");
 		Assert.assertEquals(total_s, upl_view.title);
 		pr.sign_out();
 	}

@@ -40,12 +40,10 @@ class All_types_policy {
 		
 		upl_contr.get_ins_types();
 		/*->*/ upl_contr.field_ins_types_pol.sendKeys(Upload_policy_controls.pol_types[0]);
-		System.out.println(Upload_policy_controls.pol_types[0]);
-		
+				
 		upl_contr.get_insur();
 		/*->*/ upl_contr.field_insur.sendKeys(Upload_policy_controls.insurers_pol[2]);
-		System.out.println(Upload_policy_controls.insurers_pol[2]);
-		
+				
 		upl_contr.get_data();
 		/*->*/ upl_contr.beg_per.sendKeys(Upload_policy_controls.date_values[1]);
 		upl_contr.end_per.sendKeys(Upload_policy_controls.date_values[2]);
@@ -54,6 +52,7 @@ class All_types_policy {
 		/*->*/ upl_contr.field_price.sendKeys(Upload_policy_controls.price_values[0]);
 		
 		upl_contr.submit_pol();
+		
 		WebDriverWait wait1 = new WebDriverWait(pr.driver, 10);
 		WebElement error = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='form-policy-add']/div/div[2]/div/p")));
 		Assert.assertEquals(error.getText(), "Insurance Type ID cannot be blank.");
