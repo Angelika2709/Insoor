@@ -52,5 +52,5 @@ class Precondition_policy_view {
 		WebElement sign_out_but = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='fa fa-sign-out']")));
 		sign_out_but.sendKeys(Keys.ENTER);
-	}
+		}
 }
