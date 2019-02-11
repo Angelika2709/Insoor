@@ -1,40 +1,25 @@
 package models;
 
-public class PolicyData {
-	private final String ins_type;
-    private final String insur;
-    private final String data_begin;
-    private final String data_end;
-    private final String price;
-    
-    public PolicyData(String ins_type, String insur, String data_begin, String data_end, String price) {
-    	 this.ins_type = ins_type;
-         this.insur = insur;
-         this.data_begin = data_begin;
-         this.data_end = data_end;
-         this.price = price;
-    }
-    
-    public String get_ins_type() {
-    	return ins_type;
-    }
-    
-    public String get_insur() {
-    	return insur;
-    }
-    
-    public String get_data_begin() {
-    	return data_begin;
-    }
-    
-    public String get_data_end() {
-    	return data_end;
-    }
-    
-    public String get_price() {
-    	return price;
-    }
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-   
-    
+import appmanager.HelperBase;
+import appmanager.NavigationHelper;
+
+public class PolicyData extends HelperBase{
+	private NavigationHelper navigationHelper;		
+		
+	
+public PolicyData(WebDriver wd) {
+		super(wd);
+		navigationHelper = new NavigationHelper(wd);
+	}	
+	
+	public void get_controls() {
+		WebElement ins_types = wd.findElement(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"));
+			
+	}
+	
+
 }

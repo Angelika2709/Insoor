@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import models.PolicyData;
+import models.PolicyData_old;
 
 public class PolicyHelper extends HelperBase {
 	private NavigationHelper navigationHelper;
@@ -23,7 +23,7 @@ public class PolicyHelper extends HelperBase {
 		navigationHelper = new NavigationHelper(wd);
 	}
 
-	public void fillPolicyData(PolicyData policyData) {
+	public void fillPolicyData(PolicyData_old policyData_old) {
 		type(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"), null);
 		type(By.xpath("//*/form/div/div[3]/div/select[@id=\"userinsurancetypecompany-company_id\"]"), null);
 		type(By.id("start_datepicker"), null);
@@ -31,8 +31,8 @@ public class PolicyHelper extends HelperBase {
 		type(By.id("userinsurancetypecompany-price_year"), null);
 	}
 
-	public void createOfferData(PolicyData policyData) {
-		fillPolicyData(new PolicyData("Poligraf", "P", "Sharikov", "poligraf@poligraf.com", "+7666123456"));
+	public void createOfferData(PolicyData_old policyData_old) {
+		fillPolicyData(new PolicyData_old("Poligraf", "P", "Sharikov", "poligraf@poligraf.com", "+7666123456"));
 		get_ins_types();
 		get_insur();
 		submit_pol();
@@ -51,7 +51,7 @@ public class PolicyHelper extends HelperBase {
 		}
 	}
 
-	// Insurer
+	/// Insurer
 	public void get_insur() {
 		Select dropdown_insur = new Select(
 				wd.findElement(By.xpath("//*[@id=\"userinsurancetypecompany-company_id\"]")));

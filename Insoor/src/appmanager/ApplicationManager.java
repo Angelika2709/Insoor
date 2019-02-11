@@ -3,14 +3,15 @@ package appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import models.PolicyData;
+import models.PolicyData_old;
 
 public class ApplicationManager {
 	WebDriver wd;
 
 	private SessionHelper sessionHelper;
 	private NavigationHelper navigationHelper;
-	private PolicyHelper policyHelper;
+	//private PolicyHelper policyHelper;
+	private InsuranceType insuranceType;
 	private String browser;
 
 	public ApplicationManager(String browser) {
@@ -36,8 +37,8 @@ public class ApplicationManager {
 		return navigationHelper;
 	}
 	
-    public PolicyHelper getPolicyHelper() {
-        return policyHelper;
+    public InsuranceType getinsuranceType() {
+        return insuranceType;
     }
 
 }
