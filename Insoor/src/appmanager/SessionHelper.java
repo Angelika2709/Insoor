@@ -9,12 +9,11 @@ public class SessionHelper extends HelperBase {
 	        super(wd);
 	    }
 
+	    //
 	    public void login(String username, String password) {
 	        type(By.id("loginform-email"), username);
 	        type(By.id("loginform-password"), password);
 	        click(By.name("login-button"));	     
-
-	    }
-	
+	    }	
 
 }
