@@ -13,7 +13,6 @@ import appmanager.*;
 public class InsuranceType extends HelperBase {
 	private NavigationHelper navigationHelper;
 	public WebElement field_ins_types;
-	String[] pol_types;
 	List<String> ins_types = new ArrayList<String>();
 
 	public InsuranceType(WebDriver wd) {
@@ -21,23 +20,21 @@ public class InsuranceType extends HelperBase {
 		navigationHelper = new NavigationHelper(wd);
 	}
 
-	public String[] getInstTypes() {
+	public List<String> types() {
 		WebElement types_list = wd
 				.findElement(By.xpath("//select[@id=\"userinsurancetypecompany-insurance_type_id\"]"));
 		List<WebElement> alltypes = types_list.findElements(By.tagName("option"));
 		for (int j = 0; j < alltypes.size(); j++) {
-			ins_types.add(alltypes.get(j).getText());
+			ins_types.add(alltypes.get(j).getText());	
+			System.out.println(alltypes.get(j).getText());
 		}
-		return pol_types;
+		return ins_types;
+		
 	}
 
-	public void setInstTypes(String[] types) {
-		this.pol_types = types;
-	}
-
-	public void sendKeys() {
-		setInstTypes(pol_types);
-		field_ins_types.sendKeys(getInstTypes());
+	public void setInstTypes() {		
+		field_ins_types = wd.findElement(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"));
+		field_ins_types.sendKeys(ins_types.get(2));
 	}
 
 }

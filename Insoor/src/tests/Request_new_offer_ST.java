@@ -20,10 +20,10 @@ class Request_new_offer_ST extends TestBase {
 		app.getNavigationHelper().main_sidebar();
 		Thread.sleep(5000);
 		app.getNavigationHelper().go_to_policy();
-		Thread.sleep(3000);		
-		app.getInsuranceType().sendKeys();
+		Thread.sleep(3000);	
+		app.getInsuranceType().setInstTypes();
+		
 	}
-
 
 }
 
