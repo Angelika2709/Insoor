@@ -3,14 +3,14 @@ package appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import models.OfferData;
+import models.PolicyData;
 
 public class ApplicationManager {
 	WebDriver wd;
 
 	private SessionHelper sessionHelper;
 	private NavigationHelper navigationHelper;
-	private OfferData offerData;
+	private PolicyHelper policyHelper;
 	private String browser;
 
 	public ApplicationManager(String browser) {
@@ -36,8 +36,8 @@ public class ApplicationManager {
 		return navigationHelper;
 	}
 	
-    public OfferData getOfferData() {
-        return offerData;
+    public PolicyHelper getPolicyHelper() {
+        return policyHelper;
     }
 
 }

@@ -8,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import models.OfferData;
+import models.PolicyData;
 
-public class OfferHelper extends HelperBase {
+public class PolicyHelper extends HelperBase {
 	private NavigationHelper navigationHelper;
 	public static String[] insurers_pol, pol_types;
 	private static int linksCount = 0;
@@ -18,21 +18,28 @@ public class OfferHelper extends HelperBase {
 	private String[] date_values = { "dd/MM/yyyy", "24/01/2019", "24/04/2019", "24/07/2019", "24/01/2020" };
 	private String[] price_values = { "101", "-101", "0" };
 
-	public OfferHelper(WebDriver wd) {
+	public PolicyHelper(WebDriver wd) {
 		super(wd);
 		navigationHelper = new NavigationHelper(wd);
 	}
 
-	public void fillOfferData(OfferData offerData) {
-		type(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"),
-				offerData.get_ins_type());
-		type(By.xpath("//*/form/div/div[3]/div/select[@id=\"userinsurancetypecompany-company_id\"]"),
-				offerData.get_insur());
-		type(By.id("start_datepicker"), offerData.get_data_begin());
-		type(By.id("end_datepicker"), offerData.get_data_end());
-		type(By.id("userinsurancetypecompany-price_year"), offerData.get_price());
+	public void fillPolicyData(PolicyData policyData) {
+		type(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"), null);
+		type(By.xpath("//*/form/div/div[3]/div/select[@id=\"userinsurancetypecompany-company_id\"]"), null);
+		type(By.id("start_datepicker"), null);
+		type(By.id("end_datepicker"), null);
+		type(By.id("userinsurancetypecompany-price_year"), null);
 	}
 
+	public void createOfferData(PolicyData policyData) {
+		fillPolicyData(new PolicyData("Poligraf", "P", "Sharikov", "poligraf@poligraf.com", "+7666123456"));
+		get_ins_types();
+		get_insur();
+		submit_pol();
+		close_pol();
+	
+	}
+	
 	// Insurance type
 	public void get_ins_types() {
 		Select dropdown_ins_types = new Select(
@@ -53,7 +60,6 @@ public class OfferHelper extends HelperBase {
 		for (int o = 0; o < dd_insur.size(); o++) {
 			insurers_pol[o] = dd_insur.get(o).getText();
 		}
-
 	}
 
 	public void submit_pol() {

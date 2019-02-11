@@ -1,10 +1,11 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-import models.OfferData;
-import us1.Upload_policy_controls;
-
+import models.PolicyData;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import appmanager.NavigationHelper;
 
@@ -14,9 +15,10 @@ class Request_new_offer_ST extends TestBase {
 	void testRequestOffer() {
 		app.getNavigationHelper().main_sidebar();
 		app.getNavigationHelper().go_to_policy();
-		app.getOfferData().get_ins_type();
-		app.getOfferData().get_insur();		
-		app.getNavigationHelper().sign_out();
+		app.getPolicyHelper().get_ins_types();
+		
+		//app.getOfferData().get_insur();		
+		//app.getNavigationHelper().sign_out();
 
 	}
 

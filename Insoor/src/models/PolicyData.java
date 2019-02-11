@@ -1,13 +1,13 @@
 package models;
 
-public class OfferData {
+public class PolicyData {
 	private final String ins_type;
     private final String insur;
     private final String data_begin;
     private final String data_end;
     private final String price;
     
-    public OfferData(String ins_type, String insur, String data_begin, String data_end, String price) {
+    public PolicyData(String ins_type, String insur, String data_begin, String data_end, String price) {
     	 this.ins_type = ins_type;
          this.insur = insur;
          this.data_begin = data_begin;
@@ -33,7 +33,8 @@ public class OfferData {
     
     public String get_price() {
     	return price;
-    }     
-    
+    }
+
+   
     
 }
