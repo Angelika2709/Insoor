@@ -41,8 +41,7 @@ class Precondition_policy {
 		linksCount = linksize.size();
 		links = new String[linksCount];
 		for (int i = 0; i < linksCount; i++) {
-			links[i] = linksize.get(i).getAttribute("href");			
-		}
+			links[i] = linksize.get(i).getAttribute("href")}
 		Precondition_policy.driver.navigate().to(Precondition_policy.links[25]);		
 	}
 	

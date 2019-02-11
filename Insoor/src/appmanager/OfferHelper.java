@@ -52,6 +52,10 @@ public class OfferHelper extends HelperBase {
 			for (int o = 0; o < dd_insur.size(); o++) {
 				insurers_pol[o] = dd_insur.get(o).getText();
 			}
+			
+			// Date
+			
+	
 		}
 
 		public void submit_pol() {
