@@ -31,7 +31,6 @@ public class NavigationHelper extends HelperBase {
 
 	public void go_to_policy() {
 		wd.findElement(By.xpath("//*[@id=\"new_policy\"]")).click();
-		System.out.println(wd.findElement(By.xpath("//*[@id=\"new_policy\"]")).getText());
 		// ожидание
 		WebDriverWait wait = new WebDriverWait(wd, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("form-policy-filter")));

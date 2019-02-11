@@ -3,7 +3,6 @@ package appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import models.PolicyData;
 
 public class ApplicationManager {
 	WebDriver wd;
@@ -24,7 +23,8 @@ public class ApplicationManager {
 		wd.get("http://sotsos:St.Petersburg@insoor.com");		
 		sessionHelper = new SessionHelper(wd); // new obj init for using in Helper
 		sessionHelper.login("Anzhela.Barkovskaia@sotsos.com", "tosca!123");
-		navigationHelper = new NavigationHelper(wd); // new obj init for using in Helper				
+		navigationHelper = new NavigationHelper(wd); // new obj init for using in Helper	
+		insuranceType = new InsuranceType(wd);
 	}
 
 	public void stop() {
