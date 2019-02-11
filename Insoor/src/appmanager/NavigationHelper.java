@@ -25,13 +25,13 @@ public class NavigationHelper extends HelperBase {
 		for (int i = 0; i < linksCount; i++) {
 			links[i] = linksize.get(i).getAttribute("href");
 		}
-		wd.navigate().to(links[25]);
-
+		wd.navigate().to(links[28]);
+		
 	}
 
 	public void go_to_policy() {
-		wd.navigate().to(links[28]);
-		wd.findElement(By.id("new_policy")).click();
+		wd.findElement(By.xpath("//*[@id=\"new_policy\"]")).click();
+		System.out.println(wd.findElement(By.xpath("//*[@id=\"new_policy\"]")).getText());
 		// ожидание
 		WebDriverWait wait = new WebDriverWait(wd, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("form-policy-filter")));

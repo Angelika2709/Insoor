@@ -1,25 +1,26 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-import models.PolicyData_old;
+
+import models.PolicyData;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import appmanager.InsuranceType;
 import appmanager.NavigationHelper;
 
 class Request_new_offer_ST extends TestBase {
 	
 	@Test
-	void testRequestOffer() {
-		this.types=types;
+	void testRequestOffer() throws Exception {
 		app.getNavigationHelper().main_sidebar();
+		Thread.sleep(5000);
 		app.getNavigationHelper().go_to_policy();
-		app.getinsuranceType().get_ins_types(types);
+		Thread.sleep(5000);
 		
-		//app.getOfferData().get_insur();		
-		//app.getNavigationHelper().sign_out();
+
 
 	}
 

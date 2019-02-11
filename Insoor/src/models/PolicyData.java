@@ -5,21 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import appmanager.HelperBase;
+import appmanager.InsuranceType;
 import appmanager.NavigationHelper;
 
-public class PolicyData extends HelperBase{
-	private NavigationHelper navigationHelper;		
-		
-	
-public PolicyData(WebDriver wd) {
-		super(wd);
-		navigationHelper = new NavigationHelper(wd);
-	}	
-	
-	public void get_controls() {
-		WebElement ins_types = wd.findElement(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"));
-			
+public class PolicyData {
+	private String[] types;
+
+	public PolicyData(String[] types) {
+		this.types = types;
 	}
 	
+	public String [] getTypes() {
+		return types;
+	}
 
 }

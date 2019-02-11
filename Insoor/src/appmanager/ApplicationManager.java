@@ -3,14 +3,13 @@ package appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import models.PolicyData_old;
+import models.PolicyData;
 
 public class ApplicationManager {
 	WebDriver wd;
 
 	private SessionHelper sessionHelper;
 	private NavigationHelper navigationHelper;
-	//private PolicyHelper policyHelper;
 	private InsuranceType insuranceType;
 	private String browser;
 
@@ -21,11 +20,11 @@ public class ApplicationManager {
 	public void init() {
 		System.setProperty("webdriver.chrome.driver", "C://chromedriver_win32//chromedriver.exe");
 		wd = new ChromeDriver();
-		wd.get("http://sotsos:St.Petersburg@insoor.com");
+		wd.manage().window().maximize();
+		wd.get("http://sotsos:St.Petersburg@insoor.com");		
 		sessionHelper = new SessionHelper(wd); // new obj init for using in Helper
 		sessionHelper.login("Anzhela.Barkovskaia@sotsos.com", "tosca!123");
-		navigationHelper = new NavigationHelper(wd); // new obj init for using in Helper		
-		
+		navigationHelper = new NavigationHelper(wd); // new obj init for using in Helper				
 	}
 
 	public void stop() {
@@ -37,7 +36,7 @@ public class ApplicationManager {
 		return navigationHelper;
 	}
 	
-    public InsuranceType getinsuranceType() {
+    public InsuranceType getInsuranceType() {
         return insuranceType;
     }
 

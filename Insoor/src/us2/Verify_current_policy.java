@@ -78,5 +78,4 @@ class Verify_current_policy {
 		this.pr = null;
 		pr.driver.close();
 	}
-
 }
