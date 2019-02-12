@@ -23,7 +23,11 @@ public class HelperBase {
 		wd.findElement(locator).sendKeys(text);
 		wd.findElement(locator).click();
 	}
-
+	
+	protected void sendValues(By locator,String types) {
+		wd.findElement(locator).sendKeys(types);		
+	}	
+	
 	protected void click(By locator) {
 		wd.findElement(By.name("login-button")).click();
 
@@ -32,7 +36,5 @@ public class HelperBase {
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("/html/body/div[1]/aside[1]/section/ul/li[2]/a/span")));
 	}
-
-	
 
 }

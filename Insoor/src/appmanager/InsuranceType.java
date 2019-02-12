@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import appmanager.*;
+import model.InsTypes;
 
 public class InsuranceType extends HelperBase {
 	private NavigationHelper navigationHelper;
@@ -17,9 +18,10 @@ public class InsuranceType extends HelperBase {
 	public InsuranceType(WebDriver wd) {
 		super(wd);
 		navigationHelper = new NavigationHelper(wd);
+
 	}
 
-	public List<String> getTypes() {
+	public List<String> getListTypes() {
 		WebElement types_list = wd
 				.findElement(By.xpath("//select[@id=\"userinsurancetypecompany-insurance_type_id\"]"));
 		List<WebElement> alltypes = types_list.findElements(By.tagName("option"));
@@ -29,9 +31,10 @@ public class InsuranceType extends HelperBase {
 		return ins_types;
 	}
 
-	public void setTypes() {
-		field_ins_types = wd.findElement(
-				By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"));
+	public void getTypes(InsTypes insttypes) {
+		sendValues(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"),
+				insttypes.returnInstTypes());
+
 	}
 
 }

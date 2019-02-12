@@ -22,8 +22,8 @@ class Request_new_offer_ST extends TestBase {
 		Thread.sleep(5000);
 		app.getNavigationHelper().go_to_policy();
 		Thread.sleep(3000);	
-		app.getInsuranceType().
-		
+		app.getInsuranceType().getTypes(new InsTypes("Life"));	
+		Thread.sleep(3000);	
 	}
 
 }
