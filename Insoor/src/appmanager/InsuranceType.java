@@ -12,6 +12,7 @@ import model.InsTypes;
 
 public class InsuranceType extends HelperBase {
 	private NavigationHelper navigationHelper;
+	
 
 
 	public InsuranceType(WebDriver wd) {
@@ -22,6 +23,8 @@ public class InsuranceType extends HelperBase {
 	public void getTypes(InsTypes insttypes) {
 		sendValues(By.xpath("//*/form/div/div[2]/div/select[@id=\"userinsurancetypecompany-insurance_type_id\"]"),
 				insttypes.returnInstTypes());
+		boolean err_type = wd.findElement());
+		
 	}
-
 }
+

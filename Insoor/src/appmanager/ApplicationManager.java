@@ -2,6 +2,7 @@ package appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class ApplicationManager {
@@ -49,5 +50,6 @@ public class ApplicationManager {
     public Insurer getInsurerName() {
         return insurerName;
     }
+    
     
    }
