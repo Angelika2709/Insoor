@@ -10,6 +10,9 @@ public class ApplicationManager {
 	private SessionHelper sessionHelper;
 	private NavigationHelper navigationHelper;
 	private InsuranceType insuranceType;
+	private Insurer insurerName;
+	public DatesHelper datesHelper;
+	public PriceHelper priceHelper;
 	private String browser;
 
 	public ApplicationManager(String browser) {
@@ -21,10 +24,13 @@ public class ApplicationManager {
 		wd = new ChromeDriver();
 		wd.manage().window().maximize();
 		wd.get("http://sotsos:St.Petersburg@insoor.com");		
-		sessionHelper = new SessionHelper(wd); // new obj init for using in Helper
+		sessionHelper = new SessionHelper(wd);
+		datesHelper = new DatesHelper(wd); 
+		priceHelper = new PriceHelper(wd); 
 		sessionHelper.login("Anzhela.Barkovskaia@sotsos.com", "tosca!123");
-		navigationHelper = new NavigationHelper(wd); // new obj init for using in Helper	
+		navigationHelper = new NavigationHelper(wd); 	
 		insuranceType = new InsuranceType(wd);
+		insurerName = new Insurer(wd);
 	}
 
 	public void stop() {
@@ -39,5 +45,9 @@ public class ApplicationManager {
     public InsuranceType getInsuranceType() {
         return insuranceType;
     }
-
-}
+    
+    public Insurer getInsurerName() {
+        return insurerName;
+    }
+    
+   }

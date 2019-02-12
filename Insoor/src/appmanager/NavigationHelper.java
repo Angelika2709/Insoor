@@ -35,6 +35,14 @@ public class NavigationHelper extends HelperBase {
 		WebDriverWait wait = new WebDriverWait(wd, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("form-policy-filter")));
 	}
+	
+	public void submit_pol() {	
+		wd.findElement(By.xpath("/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[2]")).submit();
+	}
+	
+	public void close_pol() {
+		wd.findElement(By.xpath("/html/body/div[1]/div/section[2]/section/div/div[1]/div/div[3]/div/div/div[2]/div/form/div[2]/button[1]")).sendKeys(Keys.ENTER);
+	}	
 
 	// разлогиниться
 	public static void sign_out() {
