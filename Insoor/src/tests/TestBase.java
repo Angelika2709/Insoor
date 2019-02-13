@@ -2,8 +2,10 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.BrowserType;
 
 import appmanager.ApplicationManager;
