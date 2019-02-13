@@ -16,14 +16,20 @@ public class DatesHelper extends HelperBase {
 		type(By.id("start_datepicker"), begin);
 		type(By.id("end_datepicker"), end);
 	}
-	
-	public void verificationInsurer() {
-		String insError = wd.findElement(By.xpath("//*[@id=\"form-policy-add\"]/div[1]/div[3]/div/p")).getText();
-		WebElement ins = wd
-				.findElement(By.xpath("//select[@id='userinsurancetypecompany-company_id']/option[1]"));
-		if (ins != null) 
-			Assert.assertTrue(insError, true);			
-			System.out.println(insError.toString());		
+
+	public void verificationDates() {
+		String beginError = wd.findElement(By.xpath("//*[@id=\"form-policy-add\"]/div[1]/div[4]/div/p")).getText();
+		String endError = wd.findElement(By.xpath("//*[@id=\"form-policy-add\"]/div[1]/div[5]/div/p")).getText();
+		WebElement begin = wd.findElement(By.xpath("//input[@id='start_datepicker']"));
+		WebElement end = wd.findElement(By.xpath("//input[@id='end_datepicker']"));
+
+		if (begin != null)
+			Assert.assertTrue(beginError, true);
+		System.out.println(beginError.toString());
+		
+		if (end != null)
+			Assert.assertTrue(endError, true);
+		System.out.println(endError.toString());
 	}
 
 }
