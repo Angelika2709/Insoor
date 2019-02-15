@@ -25,7 +25,7 @@ public class HelperBase {
 	
 	protected void sendValues(By locator, String text) {
 		wd.findElement(locator).sendKeys(text);		
-	}	
+			}	
 	
 	protected void sendDates(By locator, String text) {
 		wd.findElement(locator).sendKeys(text);
